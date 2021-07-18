@@ -1,0 +1,12 @@
+# fly.toml file generated for green-meadow-2237 on 2021-06-29T15:51:00+05:30
+
+app = "green-meadow-2237"
+
+kill_signal = "SIGINT"
+kill_timeout = 5
+
+[env]
+
+[[mounts]]
+  destination = "/var/lib/containers"
+  source = "containers"
