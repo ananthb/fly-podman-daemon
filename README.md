@@ -28,3 +28,6 @@ Podman running as root is the default experience currently. Containers are unabl
 ## Next Steps
 1. Delete Docker Engine!
 2. You almost definitely want to scale your remote daemon: `fly scale vm dedicated-cpu-2x`.
+
+# LICENSE
+podman-daemon is available under the [MIT License](./LICENSE) and is copyright (c) 2021 Ananth Bhaskararaman.
