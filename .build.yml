@@ -1,0 +1,12 @@
+image: archlinux
+secrets:
+- 2630423b-b29c-44d3-813f-5284b32fb8b0
+- 455093dd-02f6-485a-b5bb-c7b3491c5725
+packages:
+  - curl
+  - podman
+tasks:
+  - setup: curl -L https://fly.io/install.sh | sh
+  - deploy: |
+      podman system service unix:///tmp/podman.sock&
+      DOCKER_HOST=unix:///tmp/podman.sock ~/.fly/bin/flyctl deploy podman-daemon

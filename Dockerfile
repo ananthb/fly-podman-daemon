@@ -4,4 +4,4 @@ RUN pacman -Syu --needed --noconfirm \
     && pacman -Scc --noconfirm
 VOLUME /var/lib/containers
 ENTRYPOINT ["podman", "--events-backend=none"]
-CMD ["system", "service", "tcp:[::]:8080","-t0"]
+CMD ["system", "service", "tcp:[::]:8080", "-t0"]
