@@ -13,4 +13,4 @@ tasks:
       sudo usermod --add-subgids 100000-165535 $(whoami)
   - deploy: |
       systemctl --user enable --now podman.socket
-      DOCKER_HOST=unix:///tmp/podman.sock ~/.fly/bin/flyctl deploy podman-daemon
+      DOCKER_HOST=unix:///run/$(whoami)/podman.sock ~/.fly/bin/flyctl deploy podman-daemon
