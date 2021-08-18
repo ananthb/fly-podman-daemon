@@ -13,5 +13,5 @@ kill_timeout = 5
   auto_rollback = true
 
 [[mounts]]
-  destination = "/var/lib/containers"
-  source = "containers"
+  destination = "/var/lib/podman"
+  source = "podman"
