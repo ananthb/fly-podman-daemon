@@ -1,7 +1,7 @@
-FROM docker.io/library/ubuntu:21.04
-RUN apt-get update -qq \
-    && apt-get install -yqq podman runc iptables ca-certificates \
-    && apt-get clean
+FROM docker.io/library/archlinux
+RUN pacman -Syu --needed --noconfirm \
+      podman runc ca-certificates \
+    && pacman -Scc --noconfirm
 VOLUME /var/lib/containers
 ENTRYPOINT ["podman", "--events-backend=none"]
 CMD ["system", "service", "tcp:[::]:8080","-t0"]
