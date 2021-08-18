@@ -6,10 +6,11 @@ packages:
   - curl
   - podman
 tasks:
-  - setup: 
+  - setup: |
       curl -L https://fly.io/install.sh | sh
-      sudo usermod --add-subuids 100000-165535 $(id -u)
-      sudo usermod --add-subgids 100000-165535 $(id -u)
+      sudo touch /etc/subuid /etc/subgid
+      sudo usermod --add-subuids 100000-165535 $(whoami)
+      sudo usermod --add-subgids 100000-165535 $(whoami)
   - deploy: |
-      podman system service unix:///tmp/podman.sock&
+      systemctl --user enable --now podman.socket
       DOCKER_HOST=unix:///tmp/podman.sock ~/.fly/bin/flyctl deploy podman-daemon
