@@ -13,5 +13,5 @@ kill_timeout = 5
   auto_rollback = true
 
 [[mounts]]
-  destination = "/var/lib/podman/.local/share/containers"
+  destination = "/home/podman/.local/share/containers"
   source = "containers"
