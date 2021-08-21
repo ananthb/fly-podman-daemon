@@ -7,5 +7,6 @@ RUN useradd --system --home-dir /var/lib/podman --create-home --shell /sbin/nolo
     && touch /etc/subuid /etc/subgid \
     && usermod --add-subuids 100000-165535 --add-subgids 100000-165535 podman
 USER podman
+COPY registries.conf ~/.config/containers/registries.conf
 ENTRYPOINT ["podman", "--events-backend=none"]
 CMD ["system", "service", "tcp:[::]:8080", "-t0"]
