@@ -21,9 +21,8 @@ Podman running as root is the default experience currently. Containers are unabl
 ## Connect to podman remote
 1. Create a WireGuard peer with `fly wireguard create`
 2. Setup WireGuard with generated config.
-3. `fly ips private` to get the IP of your daemon.
-4. Set the `CONTAINER_HOST` env variable using that IP on TCP port 8080: `export CONTAINER_HOST=tcp://[]:8080`
-5. On Linux, use `podman --remote` with the env var set to use the remove daemon. On MacOS, `brew install podman-remote`. Windows users can use podman-remote or install podman in WSL.
+3. Set the `CONTAINER_HOST` env variable using the fly.io private network hostname on TCP port 8080: `export CONTAINER_HOST=tcp://appname.internal:8080`
+4. On Linux, use `podman --remote` with the env var set to use the remove daemon. On MacOS, `brew install podman-remote`. Windows users can use podman-remote or install podman in WSL.
 
 ## Next Steps
 1. Delete Docker Engine!
