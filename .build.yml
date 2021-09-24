@@ -4,14 +4,16 @@ secrets:
 - 455093dd-02f6-485a-b5bb-c7b3491c5725
 packages:
   - curl
-  - podman
+  # - podman
+  - docker
 tasks:
   - setup: |
       curl -L https://fly.io/install.sh | sudo env FLYCTL_INSTALL=/usr/local sh
-      sudo touch /etc/subuid /etc/subgid
-      sudo usermod --add-subuids 100000-165535 $(whoami)
-      sudo usermod --add-subgids 100000-165535 $(whoami)
+      sudo systemctl start docker.service
+      #sudo touch /etc/subuid /etc/subgid
+      #sudo usermod --add-subuids 100000-165535 $(whoami)
+      #sudo usermod --add-subgids 100000-165535 $(whoami)
   - deploy: |
-      systemctl --user start podman.socket
+      #systemctl --user start podman.socket
       #DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock /flyctl deploy podman-daemon
       flyctl deploy podman-daemon
