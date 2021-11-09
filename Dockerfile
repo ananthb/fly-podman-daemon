@@ -5,7 +5,6 @@ RUN addgroup --system podman \
     && echo 'podman:100000:65536' | tee /etc/subuid /etc/subgid
 USER podman
 COPY --chown=podman registries.conf /home/podman/.config/containers/registries.conf
-RUN mkdir -p /home/podman/.local/share/containers
 VOLUME /home/podman/.local/share/containers
 ENTRYPOINT ["podman"]
 CMD ["system", "service", "tcp:[::]:8080", "-t0"]
