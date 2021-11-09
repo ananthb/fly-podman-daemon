@@ -1,15 +1,6 @@
 # Fly Podman Daemon
 
-This is a Podman daemon that runs on [Fly](https://fly.io) and can be used to build OCI images using podman.
-
-## Caveats
-`podman build` works, but `podman run` has issues.
-
-### Root-less podman
-Running podman daemon as a non-root user works, but builds fail because podman expects subuid and subgid support. This seems to require some kernel support.
-
-### Root podman
-Podman running as root is the default experience currently. Containers are unable to run once more because of issues loading iptables modules. This might be configurable.
+This is a Podman daemon that runs on [Fly](https://fly.io) and can be used to build OCI images using podman. Podman runs as an unprivileged user inside the container. See [podman rootless](https://github.com/containers/podman/blob/main/rootless.md) for a list of caveats and gotchas. The majority of image builds will work fine in rootless podman.
 
 ## Installation
 1. Clone this repository.
