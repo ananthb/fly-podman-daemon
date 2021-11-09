@@ -1,10 +1,7 @@
-FROM docker.io/library/archlinux
-RUN pacman -Syu --needed --noconfirm \
-      podman runc ca-certificates \
-    && pacman -Scc --noconfirm
-RUN useradd --system --home-dir /home/podman --shell /sbin/nologin podman \
-    && touch /etc/subuid /etc/subgid \
-    && usermod --add-subuids 100000-165535 --add-subgids 100000-165535 podman
+FROM docker.io/library/alpine:3.14.2
+RUN apk --no-cache add podman runc ca-certificates
+RUN adduser --system --home /home/podman --shell /sbin/nologin podman \
+    && echo 'podman:100000:65536' | tee /etc/subuid /etc/subgid
 USER podman
 COPY registries.conf /home/podman/.config/containers/registries.conf
 VOLUME /home/podman/.local/share/containers
