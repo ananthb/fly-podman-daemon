@@ -2,6 +2,8 @@
 
 This is a Podman daemon that runs on [Fly](https://fly.io) and can be used to build OCI images using podman. Podman runs as an unprivileged user inside the container. See [podman rootless](https://github.com/containers/podman/blob/main/rootless.md) for a list of caveats and gotchas. The majority of image builds will work fine in rootless podman.
 
+Source Hut Mirror - [git.sr.ht/~ananth/fly-podman-daemon](https://git.sr.ht/~ananth/fly-podman-daemon)
+
 ## Installation
 1. Clone this repository.
 2. `fly launch` & follow the prompts.
@@ -19,5 +21,6 @@ This is a Podman daemon that runs on [Fly](https://fly.io) and can be used to bu
 1. Delete Docker Engine!
 2. You almost definitely want to scale your remote daemon: `fly scale vm dedicated-cpu-2x`.
 
-# LICENSE
-podman-daemon is available under the [MIT License](./LICENSE) and is copyright (c) 2021 Ananth Bhaskararaman.
+## LICENSE
+podman-daemon is available under the [MIT License](./LICENSE) and is copyright (c) 2021-22 Ananth Bhaskararaman.
+
